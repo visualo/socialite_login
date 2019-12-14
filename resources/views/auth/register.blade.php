@@ -95,7 +95,7 @@
                             <label for="Twitter account" class="col-md-4 col-form-label text-md-right" style="padding-left:10px">Twitter account</label>
 
                             <div class="col-md-8">
-                            <a href="{{url('/auth/redirect/twitter')}}" class="btn btn-info">Register with Twitter&ensp;&ensp;&ensp;</a>
+                            <a href="{{url('/auth/redirect')}}" class="btn btn-info">Register with Twitter&ensp;&ensp;&ensp;</a>
                                 </a>
                             </div>
                         </div>

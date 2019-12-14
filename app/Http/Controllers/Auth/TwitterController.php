@@ -15,24 +15,24 @@ use Auth;
 class TwitterController extends Controller
 {
 
-    public function redirect($provider)
+    public function redirect()
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver('twitter')->redirect();
     }
  
-    public function callback($provider)
+    public function callback()
     {
                
-        $getInfo = Socialite::driver($provider)->user();
+        $getInfo = Socialite::driver('twitter')->user();
          
-        $user = $this->createUser($getInfo,$provider);
+        $user = $this->createUser($getInfo,'twitter');
  
         auth()->login($user);
  
         return redirect()->to('/home');
  
     }
-   function createUser($getInfo,$provider){
+   function createUser($getInfo){
  
      $user = User::where('twitter_id', $getInfo->id)->first();
  
@@ -40,7 +40,7 @@ class TwitterController extends Controller
          $user = User::create([
             'name'     => $getInfo->name,
             'email'    => $getInfo->email,
-            'provider' => $provider,
+            'provider' => 'twitter',
             'twitter_id' => $getInfo->id
         ]);
       }
